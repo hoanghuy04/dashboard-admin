@@ -183,13 +183,13 @@
   ],
   "customers": [
     {
-      "id": "1",
-      "name": "Nguyễn Văn A",
+      "name": "Dương Hoàng Huy",
       "email": "user1@example.com",
       "phone": "0982155351",
       "address": "Số 171 Đường ABC, Quận 12, TP.HCM",
       "createdAt": "2025-03-02",
-      "status": "inactive"
+      "status": "inactive",
+      "id": "1"
     },
     {
       "id": "2",
