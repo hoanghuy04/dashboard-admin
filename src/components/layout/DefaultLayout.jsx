@@ -20,6 +20,9 @@ export default function DefaultLayout() {
 
   const [tableData, setTableData] = useState([]);
   const [overviewData, setOverviewData] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCust, setSelectedCust] = useState({});
+  const [form] = Form.useForm();
 
   const turnover = () => {
     return overviewData.reduce((total, item) => total + item.totalPrice, 0);
@@ -44,6 +47,25 @@ export default function DefaultLayout() {
     }).length;
   };
 
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const onFinish = async (values) => {
+      setIsModalOpen(false);
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   useEffect(() => {
     const fetchOverviewData = async () => {
       const response = await axios.get("http://localhost:3000/orders");
@@ -65,6 +87,14 @@ export default function DefaultLayout() {
     fetchTableData()
   }, []);
 
+  useEffect(() => {
+    if (isModalOpen && selectedCust) {
+      form.setFieldsValue({
+        ...selectedCust,
+      });
+    }
+  }, [selectedCust, isModalOpen]);
+
   return (
     <div className='min-h-screen grid grid-cols-[250px_1fr] 
         grid-rows-[auto_1fr_auto]'>
@@ -79,6 +109,58 @@ export default function DefaultLayout() {
       {/* Main Content */}
       <Content className="p-6 bg-gray-400">
         <div className="space-y-6">
+          {/* Modal */}
+          <Modal
+            title="Cập nhật thông tin khách hàng"
+            width={800}
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
+          >
+            <Form
+              form={form}
+              name="CustomerInfor"
+              labelCol={{ span: 6 }}
+              wrapperCol={{ span: 18 }}
+              initialValues={{ remember: true }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete="off"
+              className="grid grid-cols-2"
+            >
+              <Form.Item label="Họ tên" name="name" rules={[{ required: true }]}>
+                <Input />
+              </Form.Item>
+
+              <Form.Item label="Email" name="email" rules={[{ required: true }]}>
+                <Input />
+              </Form.Item>
+
+              <Form.Item label="Phone" name="phone" rules={[{ required: true }]}>
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Address"
+                name="address"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Created Date"
+                name="createdAt"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item name="status" valuePropName="checked" label={"Active"}>
+                <Checkbox />
+              </Form.Item>
+            </Form>
+          </Modal>
           {/* Overview Section */}
           <h2 className="font-bold text-xl flex items-center space-x-2 mb-2 pb-2 mt-2">
             <SquareKanban size={32} style={{ color: "var(--color-blue-600)" }} />
@@ -116,7 +198,7 @@ export default function DefaultLayout() {
             <ListPlus size={32} className="text-blue-600" />
             <span className="text-gray-800 text-2xl">Detail Report</span>
           </h2>
-          <Outlet></Outlet>
+          <Outlet context={{ setSelectedCust, showModal }} />
         </div>
       </Content>
 
