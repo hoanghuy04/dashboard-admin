@@ -1,0 +1,456 @@
+{
+  "orders": [
+    {
+      "id": "1",
+      "orderDate": "2025-03-01",
+      "totalPrice": 100,
+      "profit": 25
+    },
+    {
+      "id": "2",
+      "orderDate": "2025-03-02",
+      "totalPrice": 150,
+      "profit": 35
+    },
+    {
+      "id": "3",
+      "orderDate": "2025-03-03",
+      "totalPrice": 200,
+      "profit": 50
+    },
+    {
+      "id": "4",
+      "orderDate": "2025-03-04",
+      "totalPrice": 80,
+      "profit": 20
+    },
+    {
+      "id": "5",
+      "orderDate": "2025-03-05",
+      "totalPrice": 300,
+      "profit": 75
+    },
+    {
+      "id": "6",
+      "orderDate": "2025-03-06",
+      "totalPrice": 120,
+      "profit": 28
+    },
+    {
+      "id": "7",
+      "orderDate": "2025-03-07",
+      "totalPrice": 250,
+      "profit": 60
+    },
+    {
+      "id": "8",
+      "orderDate": "2025-03-08",
+      "totalPrice": 90,
+      "profit": 22
+    },
+    {
+      "id": "9",
+      "orderDate": "2025-03-09",
+      "totalPrice": 160,
+      "profit": 40
+    },
+    {
+      "id": "10",
+      "orderDate": "2025-03-10",
+      "totalPrice": 180,
+      "profit": 45
+    },
+    {
+      "id": "11",
+      "orderDate": "2025-03-11",
+      "totalPrice": 210,
+      "profit": 55
+    },
+    {
+      "id": "12",
+      "orderDate": "2025-03-12",
+      "totalPrice": 140,
+      "profit": 33
+    },
+    {
+      "id": "13",
+      "orderDate": "2025-03-13",
+      "totalPrice": 220,
+      "profit": 58
+    },
+    {
+      "id": "14",
+      "orderDate": "2025-03-14",
+      "totalPrice": 130,
+      "profit": 30
+    },
+    {
+      "id": "15",
+      "orderDate": "2025-03-15",
+      "totalPrice": 175,
+      "profit": 43
+    },
+    {
+      "id": "16",
+      "orderDate": "2025-03-16",
+      "totalPrice": 260,
+      "profit": 65
+    },
+    {
+      "id": "17",
+      "orderDate": "2025-03-17",
+      "totalPrice": 115,
+      "profit": 27
+    },
+    {
+      "id": "18",
+      "orderDate": "2025-03-18",
+      "totalPrice": 195,
+      "profit": 48
+    },
+    {
+      "id": "19",
+      "orderDate": "2025-03-19",
+      "totalPrice": 155,
+      "profit": 38
+    },
+    {
+      "id": "20",
+      "orderDate": "2025-03-20",
+      "totalPrice": 170,
+      "profit": 42
+    },
+    {
+      "id": "21",
+      "orderDate": "2025-03-21",
+      "totalPrice": 190,
+      "profit": 47
+    },
+    {
+      "id": "22",
+      "orderDate": "2025-03-22",
+      "totalPrice": 240,
+      "profit": 59
+    },
+    {
+      "id": "23",
+      "orderDate": "2025-03-23",
+      "totalPrice": 135,
+      "profit": 32
+    },
+    {
+      "id": "24",
+      "orderDate": "2025-03-24",
+      "totalPrice": 185,
+      "profit": 44
+    },
+    {
+      "id": "25",
+      "orderDate": "2025-03-25",
+      "totalPrice": 145,
+      "profit": 34
+    },
+    {
+      "id": "26",
+      "orderDate": "2025-03-26",
+      "totalPrice": 205,
+      "profit": 52
+    },
+    {
+      "id": "27",
+      "orderDate": "2025-03-27",
+      "totalPrice": 230,
+      "profit": 57
+    },
+    {
+      "id": "28",
+      "orderDate": "2025-03-28",
+      "totalPrice": 165,
+      "profit": 39
+    },
+    {
+      "id": "29",
+      "orderDate": "2025-03-29",
+      "totalPrice": 110,
+      "profit": 26
+    },
+    {
+      "id": "30",
+      "orderDate": "2025-03-30",
+      "totalPrice": 125,
+      "profit": 29
+    }
+  ],
+  "customers": [
+    {
+      "name": "Dương Hoàng Huy",
+      "email": "user1@example.com",
+      "phone": "0982155351",
+      "address": "Số 171 Đường ABC, Quận 12, TP.HCM",
+      "createdAt": "2025-03-02",
+      "status": "inactive",
+      "id": "1"
+    },
+    {
+      "name": "Trần Thị Bích",
+      "email": "user2@example.com",
+      "phone": "0993603774",
+      "address": "Số 173 Đường ABC, Quận 11, TP.HCM",
+      "createdAt": "2025-03-03",
+      "status": "active",
+      "id": "2"
+    },
+    {
+      "name": "Nguyễn Vĩnh Khiêm",
+      "email": "user3@example.com",
+      "phone": "0982529723",
+      "address": "Số 173 Đường ABC, Quận 7, TP.HCM",
+      "createdAt": "2025-03-04",
+      "status": "inactive",
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "name": "Phạm Thị Dung",
+      "email": "user4@example.com",
+      "phone": "0968792963",
+      "address": "Số 84 Đường ABC, Quận 5, TP.HCM",
+      "createdAt": "2025-03-05",
+      "status": "active"
+    },
+    {
+      "id": "5",
+      "name": "Võ Anh Tuấn",
+      "email": "user5@example.com",
+      "phone": "0990779623",
+      "address": "Số 183 Đường ABC, Quận 7, TP.HCM",
+      "createdAt": "2025-03-06",
+      "status": "active"
+    },
+    {
+      "id": "6",
+      "name": "Đặng Thùy Trang",
+      "email": "user6@example.com",
+      "phone": "0951957868",
+      "address": "Số 145 Đường ABC, Quận 7, TP.HCM",
+      "createdAt": "2025-03-07",
+      "status": "active"
+    },
+    {
+      "id": "7",
+      "name": "Hoàng Văn Lộc",
+      "email": "user7@example.com",
+      "phone": "0970092717",
+      "address": "Số 2 Đường ABC, Quận 4, TP.HCM",
+      "createdAt": "2025-03-08",
+      "status": "inactive"
+    },
+    {
+      "id": "8",
+      "name": "Ngô Thị Hạnh",
+      "email": "user8@example.com",
+      "phone": "0934040812",
+      "address": "Số 52 Đường ABC, Quận 6, TP.HCM",
+      "createdAt": "2025-03-09",
+      "status": "active"
+    },
+    {
+      "id": "9",
+      "name": "Bùi Minh Tuấn",
+      "email": "user9@example.com",
+      "phone": "0955675202",
+      "address": "Số 126 Đường ABC, Quận 8, TP.HCM",
+      "createdAt": "2025-03-10",
+      "status": "active"
+    },
+    {
+      "id": "10",
+      "name": "Tô Kim Ngân",
+      "email": "user10@example.com",
+      "phone": "0924600244",
+      "address": "Số 81 Đường ABC, Quận 11, TP.HCM",
+      "createdAt": "2025-03-11",
+      "status": "active"
+    },
+    {
+      "id": "11",
+      "name": "Nguyễn Hữu Nghĩa",
+      "email": "user11@example.com",
+      "phone": "0911962912",
+      "address": "Số 69 Đường ABC, Quận 7, TP.HCM",
+      "createdAt": "2025-03-12",
+      "status": "inactive"
+    },
+    {
+      "id": "12",
+      "name": "Lý Quang Nhật",
+      "email": "user12@example.com",
+      "phone": "0971000583",
+      "address": "Số 19 Đường ABC, Quận 9, TP.HCM",
+      "createdAt": "2025-03-13",
+      "status": "active"
+    },
+    {
+      "id": "13",
+      "name": "Phan Thị Thanh",
+      "email": "user13@example.com",
+      "phone": "0999447365",
+      "address": "Số 104 Đường ABC, Quận 5, TP.HCM",
+      "createdAt": "2025-03-14",
+      "status": "active"
+    },
+    {
+      "id": "14",
+      "name": "Trịnh Văn Hào",
+      "email": "user14@example.com",
+      "phone": "0959712355",
+      "address": "Số 126 Đường ABC, Quận 6, TP.HCM",
+      "createdAt": "2025-03-15",
+      "status": "active"
+    },
+    {
+      "id": "15",
+      "name": "Lâm Thị Mỹ Linh",
+      "email": "user15@example.com",
+      "phone": "0976303534",
+      "address": "Số 184 Đường ABC, Quận 3, TP.HCM",
+      "createdAt": "2025-03-16",
+      "status": "active"
+    },
+    {
+      "id": "16",
+      "name": "Nguyễn Quốc Khánh",
+      "email": "user16@example.com",
+      "phone": "0992798930",
+      "address": "Số 120 Đường ABC, Quận 9, TP.HCM",
+      "createdAt": "2025-03-17",
+      "status": "active"
+    },
+    {
+      "id": "17",
+      "name": "Đỗ Thị Lệ",
+      "email": "user17@example.com",
+      "phone": "0957883033",
+      "address": "Số 103 Đường ABC, Quận 8, TP.HCM",
+      "createdAt": "2025-03-18",
+      "status": "active"
+    },
+    {
+      "id": "18",
+      "name": "Hồ Văn Kiệt",
+      "email": "user18@example.com",
+      "phone": "0927628288",
+      "address": "Số 72 Đường ABC, Quận 6, TP.HCM",
+      "createdAt": "2025-03-19",
+      "status": "active"
+    },
+    {
+      "id": "19",
+      "name": "Trần Quang Đại",
+      "email": "user19@example.com",
+      "phone": "0997942081",
+      "address": "Số 139 Đường ABC, Quận 9, TP.HCM",
+      "createdAt": "2025-03-20",
+      "status": "inactive"
+    },
+    {
+      "id": "20",
+      "name": "Huỳnh Như Ý",
+      "email": "user20@example.com",
+      "phone": "0988792678",
+      "address": "Số 72 Đường ABC, Quận 6, TP.HCM",
+      "createdAt": "2025-03-21",
+      "status": "active"
+    },
+    {
+      "id": "21",
+      "name": "Nguyễn Thái Bình",
+      "email": "user21@example.com",
+      "phone": "0934746668",
+      "address": "Số 116 Đường ABC, Quận 9, TP.HCM",
+      "createdAt": "2025-03-22",
+      "status": "inactive"
+    },
+    {
+      "id": "22",
+      "name": "Mai Thị Thanh Hà",
+      "email": "user22@example.com",
+      "phone": "0963291996",
+      "address": "Số 165 Đường ABC, Quận 12, TP.HCM",
+      "createdAt": "2025-03-23",
+      "status": "inactive"
+    },
+    {
+      "id": "23",
+      "name": "Lưu Văn Quý",
+      "email": "user23@example.com",
+      "phone": "0993649607",
+      "address": "Số 189 Đường ABC, Quận 7, TP.HCM",
+      "createdAt": "2025-03-24",
+      "status": "active"
+    },
+    {
+      "id": "24",
+      "name": "Tống Thị Hoa",
+      "email": "user24@example.com",
+      "phone": "0932532139",
+      "address": "Số 176 Đường ABC, Quận 9, TP.HCM",
+      "createdAt": "2025-03-25",
+      "status": "active"
+    },
+    {
+      "id": "25",
+      "name": "Châu Minh Đạt",
+      "email": "user25@example.com",
+      "phone": "0948269904",
+      "address": "Số 85 Đường ABC, Quận 11, TP.HCM",
+      "createdAt": "2025-04-01",
+      "status": "active"
+    },
+    {
+      "id": "26",
+      "name": "Phùng Thị Lý",
+      "email": "user26@example.com",
+      "phone": "0986141637",
+      "address": "Số 160 Đường ABC, Quận 2, TP.HCM",
+      "createdAt": "2025-04-01",
+      "status": "inactive"
+    },
+    {
+      "id": "27",
+      "name": "Ngô Quang Huy",
+      "email": "user27@example.com",
+      "phone": "0949680073",
+      "address": "Số 200 Đường ABC, Quận 10, TP.HCM",
+      "createdAt": "2025-04-02",
+      "status": "inactive"
+    },
+    {
+      "id": "28",
+      "name": "Trịnh Minh Khoa",
+      "email": "user28@example.com",
+      "phone": "0996662125",
+      "address": "Số 110 Đường ABC, Quận 12, TP.HCM",
+      "createdAt": "2025-04-03",
+      "status": "inactive"
+    },
+    {
+      "id": "29",
+      "name": "Đào Thị Tuyết",
+      "email": "user29@example.com",
+      "phone": "0990192131",
+      "address": "Số 75 Đường ABC, Quận 6, TP.HCM",
+      "createdAt": "2025-04-03",
+      "status": "active"
+    },
+    {
+      "id": "30",
+      "name": "Nguyễn Văn Nam",
+      "email": "user30@example.com",
+      "phone": "0978896429",
+      "address": "Số 96 Đường ABC, Quận 10, TP.HCM",
+      "createdAt": "2025-04-04",
+      "status": "inactive"
+    }
+  ]
+}
