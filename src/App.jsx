@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import DefaultLayout from "./components/layout/DefaultLayout"
+import CustomerReport from "./components/CustomerReport"
 
 function App() {
 
@@ -7,7 +8,9 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DefaultLayout/>} />
+          <Route path="/" element={<DefaultLayout />} >
+            <Route index element={<CustomerReport />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
