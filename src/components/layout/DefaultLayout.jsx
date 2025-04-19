@@ -26,27 +26,27 @@ const menuItems = [
   {
     key: "/projects",
     icon: <ProjectOutlined />,
-    label: <NavLink to="/">Projects</NavLink>,
+    label: <NavLink to="/projects">Projects</NavLink>,
   },
   {
     key: "/teams",
     icon: <TeamOutlined />,
-    label: <NavLink to="/">Teams</NavLink>,
+    label: <NavLink to="/teams">Teams</NavLink>,
   },
   {
     key: "/analytics",
     icon: <BarChartOutlined />,
-    label: <NavLink to="/">Analytics</NavLink>,
+    label: <NavLink to="/analytics">Analytics</NavLink>,
   },
   {
     key: "/messages",
     icon: <MessageOutlined />,
-    label: <NavLink to="/">Messages</NavLink>,
+    label: <NavLink to="/messages">Messages</NavLink>,
   },
   {
     key: "/integrations",
     icon: <SettingOutlined />,
-    label: <NavLink to="/">Integrations</NavLink>,
+    label: <NavLink to="/integrations">Integrations</NavLink>,
   },
 ];
 
