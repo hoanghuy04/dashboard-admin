@@ -15,6 +15,7 @@ import {
 import { ListPlus, SquareKanban } from "lucide-react";
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
+import { updateOneCustomer } from './../../services/CustomerService';
 
 export default function DefaultLayout() {
 
@@ -52,7 +53,7 @@ export default function DefaultLayout() {
   };
 
   const handleOk = () => {
-    
+    form.submit();
   };
 
   const handleCancel = () => {
@@ -60,11 +61,24 @@ export default function DefaultLayout() {
   };
 
   const onFinish = async (values) => {
+    const res = await updateOneCustomer(selectedCust.id, values);
+
+    console.log(res);
+    
+    if (res) {
       setIsModalOpen(false);
+
+      const response = await axios.get("http://localhost:3000/customers");
+      setTableData(response.data);
+    } else {
+      console.log("Cập nhật thất bại");
+    }
   };
+  
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
 
   useEffect(() => {
     const fetchOverviewData = async () => {
