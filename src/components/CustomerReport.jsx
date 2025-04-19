@@ -7,7 +7,7 @@ import { useOutletContext } from 'react-router-dom';
 
 export default function CustomerReport() {
   const [tableData, setTableData] = useState([]);
-  const { setSelectedCust, showModal } = useOutletContext(); // Access context
+  const { setSelectedCust, showModal, showAddCustomerModal } = useOutletContext();
 
   const columns = [
     {
@@ -66,7 +66,7 @@ export default function CustomerReport() {
                 ...row,
                 status: row.status === "inactive" ? false : true,
               });
-              showModal();
+              showModal(row);
             }}
           />
           <span style={{ display: "none" }}>{row.id}</span>
@@ -79,7 +79,8 @@ export default function CustomerReport() {
     const fetchTableData = async () => {
       const response = await axios.get("http://localhost:3000/customers");
       if (Array.isArray(response.data)) {
-        setTableData(response.data);
+        // Reverse the data to display from bottom to top
+        setTableData(response.data.slice().reverse());
       }
     };
 
@@ -90,6 +91,9 @@ export default function CustomerReport() {
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="text-end">
         <div className="space-x-2">
+          <Button type="primary" onClick={showAddCustomerModal}>
+            Add Customer
+          </Button>
           <Button type="default">Import</Button>
           <Button
             type="primary"

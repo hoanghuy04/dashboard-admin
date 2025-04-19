@@ -1,5 +1,5 @@
-import { Content, Footer } from 'antd/es/layout/layout'
-import React, { useEffect, useState } from 'react'
+import { Content, Footer } from 'antd/es/layout/layout';
+import React, { useEffect, useState } from 'react';
 import { Layout, Menu, Avatar, Badge, Input, Form, Modal, Checkbox } from "antd";
 import {
   SearchOutlined,
@@ -15,14 +15,14 @@ import {
 import { ListPlus, SquareKanban } from "lucide-react";
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
-import { updateOneCustomer } from './../../services/CustomerService';
+import { createOneCustomer, updateOneCustomer } from './../../services/CustomerService';
 
 export default function DefaultLayout() {
-
   const [tableData, setTableData] = useState([]);
   const [overviewData, setOverviewData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCust, setSelectedCust] = useState({});
+  const [isAdding, setIsAdding] = useState(false); // Track if adding or editing
   const [form] = Form.useForm();
 
   const turnover = () => {
@@ -40,7 +40,6 @@ export default function DefaultLayout() {
 
     return tableData.filter((cust) => {
       const createdDate = new Date(cust.createdAt);
-
       return (
         createdDate.getMonth() === currentMonth &&
         createdDate.getFullYear() === currentYear
@@ -48,8 +47,15 @@ export default function DefaultLayout() {
     }).length;
   };
 
-  const showModal = () => {
+  const showModal = (customer = {}) => {
+    setSelectedCust(customer);
+    setIsAdding(Object.keys(customer).length === 0); // If no customer, we're adding
     setIsModalOpen(true);
+  };
+
+  const showAddCustomerModal = () => {
+    form.resetFields(); // Clear form for new customer
+    showModal(); // Open modal with empty customer
   };
 
   const handleOk = () => {
@@ -58,32 +64,38 @@ export default function DefaultLayout() {
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    setIsAdding(false);
+    form.resetFields();
   };
 
   const onFinish = async (values) => {
-    const res = await updateOneCustomer(selectedCust.id, values);
+    let res;
+    if (isAdding) {
+      // Call create API
+      res = await createOneCustomer(values);
+    } else {
+      // Call update API
+      res = await updateOneCustomer(selectedCust.id, values);
+    }
 
-    console.log(res);
-    
     if (res) {
       setIsModalOpen(false);
-
+      setIsAdding(false);
+      form.resetFields();
       const response = await axios.get("http://localhost:3000/customers");
       setTableData(response.data);
     } else {
-      console.log("Cập nhật thất bại");
+      console.log(isAdding ? "Tạo mới thất bại" : "Cập nhật thất bại");
     }
   };
-  
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-
   useEffect(() => {
     const fetchOverviewData = async () => {
       const response = await axios.get("http://localhost:3000/orders");
-
       if (Array.isArray(response.data)) {
         setOverviewData(response.data);
       }
@@ -91,27 +103,26 @@ export default function DefaultLayout() {
 
     const fetchTableData = async () => {
       const response = await axios.get("http://localhost:3000/customers");
-
       if (Array.isArray(response.data)) {
         setTableData(response.data);
       }
     };
 
     fetchOverviewData();
-    fetchTableData()
+    fetchTableData();
   }, []);
 
   useEffect(() => {
-    if (isModalOpen && selectedCust) {
+    if (isModalOpen && !isAdding && selectedCust) {
       form.setFieldsValue({
         ...selectedCust,
+        status: selectedCust.status === "active",
       });
     }
-  }, [selectedCust, isModalOpen]);
+  }, [selectedCust, isModalOpen, isAdding, form]);
 
   return (
-    <div className='min-h-screen grid grid-cols-[250px_1fr] 
-        grid-rows-[auto_1fr_auto]'>
+    <div className='min-h-screen grid grid-cols-[250px_1fr] grid-rows-[auto_1fr_auto]'>
       {/* Sidebar */}
       <div className="bg-gray-200 shadow-md row-span-3">Sidebar</div>
       {/* Header */}
@@ -125,7 +136,7 @@ export default function DefaultLayout() {
         <div className="space-y-6">
           {/* Modal */}
           <Modal
-            title="Cập nhật thông tin khách hàng"
+            title={isAdding ? "Thêm khách hàng mới" : "Cập nhật thông tin khách hàng"}
             width={800}
             open={isModalOpen}
             onOk={handleOk}
@@ -136,28 +147,28 @@ export default function DefaultLayout() {
               name="CustomerInfor"
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 18 }}
-              initialValues={{ remember: true }}
+              initialValues={{ remember: true, status: true }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
               autoComplete="off"
               className="grid grid-cols-2"
             >
-              <Form.Item label="Họ tên" name="name" rules={[{ required: true }]}>
+              <Form.Item label="Họ tên" name="name" rules={[{ required: true, message: "Vui lòng nhập họ tên" }]}>
                 <Input />
               </Form.Item>
 
-              <Form.Item label="Email" name="email" rules={[{ required: true }]}>
+              <Form.Item label="Email" name="email" rules={[{ required: true, message: "Vui lòng nhập email" }, { type: "email", message: "Email không hợp lệ" }]}>
                 <Input />
               </Form.Item>
 
-              <Form.Item label="Phone" name="phone" rules={[{ required: true }]}>
+              <Form.Item label="Phone" name="phone" rules={[{ required: true, message: "Vui lòng nhập số điện thoại" }]}>
                 <Input />
               </Form.Item>
 
               <Form.Item
                 label="Address"
                 name="address"
-                rules={[{ required: true }]}
+                rules={[{ required: true, message: "Vui lòng nhập địa chỉ" }]}
               >
                 <Input />
               </Form.Item>
@@ -165,7 +176,7 @@ export default function DefaultLayout() {
               <Form.Item
                 label="Created Date"
                 name="createdAt"
-                rules={[{ required: true }]}
+                rules={[{ required: true, message: "Vui lòng nhập ngày tạo" }]}
               >
                 <Input />
               </Form.Item>
@@ -212,7 +223,7 @@ export default function DefaultLayout() {
             <ListPlus size={32} className="text-blue-600" />
             <span className="text-gray-800 text-2xl">Detail Report</span>
           </h2>
-          <Outlet context={{ setSelectedCust, showModal }} />
+          <Outlet context={{ setSelectedCust, showModal, showAddCustomerModal }} />
         </div>
       </Content>
 
@@ -221,5 +232,5 @@ export default function DefaultLayout() {
         Footer
       </Footer>
     </div>
-  )
+  );
 }

@@ -29,3 +29,20 @@ export const put = async (path, options) => {
     }
 };
 
+export const post = async (path, options) => {
+    try {
+        const response = await fetch(API_DOMAIN + path, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(options),
+        });
+        if (!response.ok) throw new Error("Lỗi khi POST dữ liệu");
+        return await response.json();
+    } catch (error) {
+        console.error("POST error:", error);
+        return null;
+    }
+};
