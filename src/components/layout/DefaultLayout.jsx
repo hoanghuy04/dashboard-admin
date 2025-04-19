@@ -169,13 +169,25 @@ export default function DefaultLayout() {
         />
       </div>
       {/* Header */}
-      <div className="bg-gray-300 py-4 shadow-lg flex items-center justify-between px-6 rounded-b-lg">
-        <h1 className="text-2xl font-bold text-white">Header</h1>
-        <div className="flex items-center space-x-4"></div>
+      <div className="bg-blue-600 py-4 shadow-lg flex items-center justify-between px-6 rounded-b-lg">
+        <h1 className="text-2xl font-bold text-white">Dashboard</h1>
+        <div className="flex items-center space-x-4">
+          <Input
+            prefix={<SearchOutlined />}
+            placeholder="Search..."
+            className="w-64"
+          />
+          <div className="mr-10">
+            <Badge className="cursor-pointer" count={5}>
+              <BellOutlined className="text-xl text-white" />
+            </Badge>
+          </div>
+          <Avatar src="https://picsum.photos/40" />
+        </div>
       </div>
 
       {/* Main Content */}
-      <Content className="p-6 bg-gray-400">
+      <Content className="p-6 bg-gray-100">
         <div className="space-y-6">
           {/* Modal */}
           <Modal
