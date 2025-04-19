@@ -14,8 +14,41 @@ import {
 } from "@ant-design/icons";
 import { ListPlus, SquareKanban } from "lucide-react";
 import axios from 'axios';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { createOneCustomer, updateOneCustomer } from './../../services/CustomerService';
+
+const menuItems = [
+  {
+    key: "/",
+    icon: <DashboardOutlined />,
+    label: <NavLink to="/">Dashboard</NavLink>,
+  },
+  {
+    key: "/projects",
+    icon: <ProjectOutlined />,
+    label: <NavLink to="/">Projects</NavLink>,
+  },
+  {
+    key: "/teams",
+    icon: <TeamOutlined />,
+    label: <NavLink to="/">Teams</NavLink>,
+  },
+  {
+    key: "/analytics",
+    icon: <BarChartOutlined />,
+    label: <NavLink to="/">Analytics</NavLink>,
+  },
+  {
+    key: "/messages",
+    icon: <MessageOutlined />,
+    label: <NavLink to="/">Messages</NavLink>,
+  },
+  {
+    key: "/integrations",
+    icon: <SettingOutlined />,
+    label: <NavLink to="/">Integrations</NavLink>,
+  },
+];
 
 export default function DefaultLayout() {
   const [tableData, setTableData] = useState([]);
@@ -124,7 +157,17 @@ export default function DefaultLayout() {
   return (
     <div className='min-h-screen grid grid-cols-[250px_1fr] grid-rows-[auto_1fr_auto]'>
       {/* Sidebar */}
-      <div className="bg-gray-200 shadow-md row-span-3">Sidebar</div>
+      <div className="bg-white shadow-md row-span-3">
+        <div className="p-4 flex justify-center">
+          <a href="/" className="text-2xl font-bold text-blue-500 text-center cursor-pointer">LOGO</a>
+        </div>
+        <Menu
+          defaultSelectedKeys={["/"]}
+          mode="inline"
+          theme="light"
+          items={menuItems}
+        />
+      </div>
       {/* Header */}
       <div className="bg-gray-300 py-4 shadow-lg flex items-center justify-between px-6 rounded-b-lg">
         <h1 className="text-2xl font-bold text-white">Header</h1>
